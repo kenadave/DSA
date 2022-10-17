@@ -1,0 +1,43 @@
+https://practice.geeksforgeeks.org/problems/replace-every-element-with-the-least-greater-element-on-its-right/1
+
+class Solution {
+    public static ArrayList<Integer> findLeastGreater(int n, int[] arr) {
+       
+    // // code here
+    // //int max=0;
+    // int min=Integer.MAX_VALUE;
+    // ArrayList<Integer> lst=new ArrayList<>();
+    // for(int i=0;i<n;i++){
+    //     min=Integer.MAX_VALUE;
+    //     for(int j=i+1;j<n;j++){
+    //         if(arr[j]>arr[i]){
+    //             min=Math.min(min,arr[j]);
+    //         }
+    //     }
+    //     if(min!=Integer.MAX_VALUE)
+    //         //arr[i]=min;
+    //     	lst.add(min);
+    //     else
+    //         //arr[i]=-1;
+    //     	lst.add(-1);
+    // }
+    //     return lst;
+    ArrayList<Integer> lst=new ArrayList<>(n+1);
+    int[] newArr=new int[n];
+    TreeSet<Integer> st=new TreeSet<>();
+    for(int i=n-1;i>=0;i--){
+    	st.add(arr[i]);
+    	if(st.size()==1 || arr[i]==st.last()) {
+    		newArr[i]=-1;
+    	}else {
+    		newArr[i]=st.ceiling(arr[i]+1);
+    	}
+    }
+    for(int i=0;i<n;i++) {
+    	lst.add(newArr[i]);
+    }
+		   
+    return lst;
+
+    }
+}
