@@ -1,1 +1,23 @@
-Program to check if input is an integer or a string : Character.isDigit()
+1) Program to check if input is an integer or a string : Character.isDigit()
+
+2) Find Extra Character using XOR :
+public class FindExtraChar {
+
+	public static void main(String[] args) {
+		String strA="abcde";
+		int res=0;
+		for (int i = 0; i < strA.length(); i++)
+        {
+            // xor with res
+            res ^= strA.charAt(i);
+        }
+		String strB="abcdef";
+		for (int i = 0; i < strB.length(); i++)
+        {
+            // xor with res
+            res ^= strB.charAt(i);
+        }
+		System.out.println((char)res);
+	}
+
+}
