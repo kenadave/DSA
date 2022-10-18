@@ -1,0 +1,60 @@
+Important things to consider :
+1) Character to Integer conversion before comparision
+2) Cases :-
+   "1", "999", "8", "26"
+
+class Solution{
+    
+  
+    String roundToNearest(String N)
+    {
+        
+	        char[] ch=N.toCharArray();
+	        int n=ch.length;
+	        int lastVal=Integer.valueOf(String.valueOf(ch[n-1]));
+	        if(lastVal%10>5){
+	        	if(N.length()==1) {
+	        		ch=new char[N.length()+1];
+	        		ch[0]='1';
+	        		ch[1]='0';
+	        		return String.valueOf(ch);
+	        	}else {
+	        		ch[n-1]='0';
+	        	}
+	            for(int i=n-2;i>=0;i--){
+	                if(ch[i]=='9' && i!=0){
+	                   ch[i]='0'; 
+	                }else if(ch[i]=='9' && i==0) {
+	                	ch=new char[N.length()+1];
+	                	ch[0]='1';
+	                	for(int j=1;j<ch.length;j++) {
+	                		ch[j]='0';
+	                	}
+	                }else{
+	                  int val=(int)ch[i];
+	                  val=val+1;
+	                  ch[i]=(char)val;
+	                  break;
+	                }
+	            }    
+	        }else {
+	        	if(N.length()==1) {
+	        		if(lastVal>5) {
+	        			ch=new char[N.length()+1];
+		        		ch[0]='1';
+		        		ch[1]='0';
+		        		return String.valueOf(ch);
+	        		}else {
+	        			return String.valueOf('0');
+	        		}
+	        	}else {
+	        		ch[n-1]='0';
+	        	}
+	        }
+	        return String.valueOf(ch);
+	    
+        
+    }
+  
+    
+}
