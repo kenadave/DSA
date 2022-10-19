@@ -1,0 +1,27 @@
+Idea is to take 2 variables one for D (r) and one for I (l) . When D is encountered, decrement the r and when I is then increment l. Assign that in a new char[] and done.
+
+class Solution {
+    public int[] diStringMatch(String s) {
+
+        int n=s.length();
+        int[] arr=new int[n+1];
+        int l=0;
+        int r=n;
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='D'){
+                arr[i]=r;
+                r--;
+            }else{
+                arr[i]=l;
+                l++;
+            }
+        }
+        if(s.charAt(s.length()-1)=='D') {
+        	arr[n]=r;
+        }else {
+        	arr[n]=l;
+        }
+        return arr;
+    
+    }
+}
