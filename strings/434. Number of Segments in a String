@@ -1,0 +1,11 @@
+class Solution {
+    public int countSegments(String s) {
+        if(s.length()==0)return 0;
+        String[] sp=s.split(" ");
+		int count=0;
+		for(int i=0;i<sp.length;i++) {
+			if(sp[i]!="")count++;
+		}
+        return count;
+    }
+}
