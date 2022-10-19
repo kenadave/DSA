@@ -51,4 +51,6 @@ for(Map.Entry<String, Integer> entry: map.entrySet()){
 	                heap.poll();
 	        }
 		
-6) 		
+6) Polynomial Rolling Hash :-
+
+Sigma of s[i]*Math.pow(p,i) where i is from 0 to n-1. p can be any prime number >26
