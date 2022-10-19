@@ -21,3 +21,34 @@ public class FindExtraChar {
 	}
 
 }
+
+3) Priority Queue comparision :-
+PriorityQueue<Map.Entry<String, Integer>> heap = new PriorityQueue<>(
+	            (a,b)->{
+	                if(a.getValue() != b.getValue())
+	                    return a.getValue().compareTo(b.getValue());
+	                return a.getKey().compareTo(b.getKey());
+	            }
+	        );
+
+4) Map of frequency of keys shortcut
+
+for(String word: words){
+	            map.merge(word, 1, Integer::sum);
+	        }
+		
+If the specified key is not already associated with a value or isassociated with null, associates it with the given non-null value.Otherwise, replaces the associated value with the results of the givenremapping function, or removes if the result is null. Thismethod may be of use when combining multiple mapped values for a key.For example, to either create or append a String msg to avalue mapping: 
+ map.merge(key, msg, String::concat)
+
+If the remapping function returns null, the mapping is removed.If the remapping function itself throws an (unchecked) exception, theexception is rethrown, and the current mapping is left unchanged. 
+		
+		
+5) Put in PQ and limit the entries :-
+
+for(Map.Entry<String, Integer> entry: map.entrySet()){
+	            heap.offer(entry);
+	            if(heap.size() > k)
+	                heap.poll();
+	        }
+		
+6) 		
