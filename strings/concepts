@@ -55,3 +55,15 @@ for(Map.Entry<String, Integer> entry: map.entrySet()){
 
 Sigma of s[i]*Math.pow(p,i) where i is from 0 to n-1. p can be any prime number >26
 Hash Value increases exponentially, Integer value will be overflow. So to avoid this, modulo is used.
+
+
+7) Translates the String representation of a BigInteger in thespecified radix into a BigInteger. 
+The String representationconsists of an optional minus or plus sign followed by asequence of one or more digits in the specified radix
+
+new BigInteger("11",2)
+
+Returns the String representation of this BigInteger in thegiven radix. 
+If the radix is outside the range from Character.MIN_RADIX to Character.MAX_RADIX inclusive,it will default to 10
+toString(2)
+
+Can be used in Binary Summation
