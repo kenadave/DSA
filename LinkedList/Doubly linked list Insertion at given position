@@ -1,0 +1,32 @@
+/* Structure of Doubly Linked List
+class Node
+{
+	int data;
+	Node next;
+	Node prev;
+	Node(int data)
+	{
+	    this.data = data;
+	    next = prev = null;
+	}
+}*/
+
+class GfG
+{
+    //Function to insert a new node at given position in doubly linked list.
+    void addNode(Node head_ref, int pos, int data)
+	{
+		Node n=head_ref;
+		int count=0;
+		while(null!=n){
+		    if(count==pos){
+		        Node temp=n.next;
+		        n.next=new Node(data);
+		        n.next.prev=n;
+		        n.next.next=temp;
+		    }
+		    n=n.next;
+		    count++;
+		}
+	}
+}
