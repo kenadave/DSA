@@ -1,0 +1,29 @@
+/* Node of a linked list
+ class Node{
+    int data;
+    Node next;
+    
+    Node(int x){
+        data = x;
+        next = null;
+    }
+    
+}
+*/
+
+class Solution
+{
+        /* Function to print nodes in a given Circular linked list */
+	    void printList(Node head)
+        {
+             Node n=head;
+             Node temp=head;
+             while(null!=temp){
+                 System.out.print(temp.data+" ");
+                 temp=temp.next;
+                 if(temp==n){
+                     break;
+                 }
+             }
+	    }
+}
