@@ -1,0 +1,18 @@
+class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null)return 0;
+        return 1+Integer.max(maxDepth(root.left),maxDepth(root.right));
+    }
+    
+    // private traverse(TreeNode root,int count)
+    //     if(null!=root){
+    //         count++;
+    //         traverse(root.left,count)
+    //     }
+    //     if(null!=root){
+    //         count++;
+    //         traverse(root.right,count)
+    //     }
+    //     if()
+    // }
+}
