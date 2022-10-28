@@ -1,0 +1,61 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<String> inLst=new ArrayList<>();
+        List<List<String>> ouLst=new ArrayList<>();
+        if(strs.length<=1){
+            inLst.add(strs[0]);
+            ouLst.add(inLst);
+            return ouLst;
+        }
+        //loop the array
+        //map 0 -> e,a,t
+        // map 1 -> e,a,t
+        //map 2 -> a,n,t
+        //map 3 -> e,a,t
+        //map 4 -> a,n,t
+        //map 5 -> a,b,t
+        //group by values and map with group and index
+        // map a,e,t -> 0,1,3
+        // map a,n,t -> 2,4
+        // map a,b,t -> 5
+        // iterate map, value0 -> list 1, value1 -> list2
+        Map<String,List<Integer>> mp=new HashMap<>();
+        for(int i=0;i<strs.length;i++){
+            //if mp contains the list having same chars
+            // Character[] ch=strs.get(i).toCharArray();
+            // //if mp contains the same characters
+            // // if mp contains same chars then update index
+            // // or add in the mp as key
+            // for(Map.Entry<Character[],List<Integer>> m:mp.entries){
+            //     if(m.getKey())
+            // }
+            // mp.put(ch);
+            //Character[] ch=Arrays.sort(strs[i].toCharArray());
+            char[] ch=strs[i].toCharArray();
+            Arrays.sort(ch);
+            String s=String.valueOf(ch);
+            //String s=Arrays.sort(strs[i].toCharArray()).toString();
+            if(mp.containsKey(s)){
+                List<Integer> in=mp.get(s);
+                //append old list and i
+                List<Integer> nLst=new ArrayList<>();
+                nLst.addAll(in);
+                nLst.add(i);
+                mp.put(s,nLst);
+            }else{
+                List<Integer> nLst=new ArrayList<>();
+                nLst.add(i);
+                mp.put(s,nLst);
+            }
+        }
+        for(Map.Entry<String,List<Integer>> m:mp.entrySet()){
+                List<Integer> indexLst=m.getValue();
+                inLst=new ArrayList<>();
+                for(Integer index:indexLst){
+                    inLst.add(strs[index]);
+                }
+                ouLst.add(inLst);
+            }
+        return ouLst;
+    }
+}
