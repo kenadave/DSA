@@ -1,0 +1,56 @@
+
+
+class Solution {
+    public int minAreaRect(int[][] points) {
+        int res=Integer.MAX_VALUE;
+        Set<Integer> pSet=new HashSet<>();
+        Map<Integer,Set<Integer>> mp=new HashMap<>();
+	        for(int[] p: points){
+	        	if(mp.containsKey(p[0])) {
+	        		pSet=mp.get(p[0]);
+	        		pSet.add(p[1]);
+	        		mp.put(p[0],pSet);
+	        	}else {
+	        		pSet=new HashSet<>();
+	        		pSet.add(p[1]);
+	        		mp.put(p[0],pSet);
+	        	}
+	        }
+        for(int[] p1:points){
+            for(int[] p2:points){
+                if(p1[0]==p2[0]||p1[1]==p2[1]){
+                    continue;
+                }else if(mp.get(p1[0]).contains(p2[1]) && mp.get(p2[0]).contains(p1[1])){
+                    res=Math.min(res,Math.abs(p1[0]-p2[0])*Math.abs(p1[1]-p2[1]));
+                    // System.out.println("p1[0]:"+p1[0]);
+                    // System.out.println("p2[1]:"+p2[1]);
+                    // System.out.println("p1[0]:"+p1[1]);
+                    // System.out.println("p2[1]:"+p2[0]);
+                }
+            }    
+        }
+        return res==Integer.MAX_VALUE?0:res;
+        // for(int i=0;i<points.length;i++){
+        //     int[] p=points[i];
+        //     pSet.add(40001*p[0]+p[1]);
+        //     if(pSet.size()>3){
+        //         // int[] temp=new int[2];
+        //         // temp[0]=p[0];
+        //         // temp[1]=pSet[1];
+        //         for(Integer j:pSet){
+        //         // System.out.println(p[0]+":"+j[1]);
+        //         // System.out.println(j[0]+":"+p[1]);    
+        //         // System.out.println(j);
+        //         if(pSet.contains(40001*p[0]+j[1])
+        //           &&pSet.contains(40001*j[0]+p[1])){
+        //             res=Math.min(res,Math.abs(p[0]-j[0])*Math.abs(p[1]-j[1]));
+        //         }
+        //         }
+        //         // for(int j=0;j<pSet.size();j++){
+        //         //     if(pSet.contains(p))
+        //         // }
+        //     }
+        // }
+        //return res;
+    }
+}
