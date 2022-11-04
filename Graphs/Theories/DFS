@@ -1,0 +1,17 @@
+starting node can be different than root
+
+DFS works as recursion (vdo 1 to 7)
+
+dfs(node){
+  !visited(node)
+  list.add(node)
+  for(it adj(node)){
+     !visited(it)
+    dfs(adj(it))
+  }
+  
+}
+
+
+S: O(N)
+T O(N)+O(2*E)
