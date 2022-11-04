@@ -1,0 +1,22 @@
+levelwise
+Queue data structure and will contain the starting node,
+visited array is required
+
+adjencency list, iterate, get neighbuors of every element, store in queue and mark them as visited.
+initialize 1st element of q () and visited
+
+iterate through q
+node = q.
+q.pop()
+bfs.add(node)
+
+    //now for neighbour nodes
+    for(for it in adj[node]){
+      if ! visited
+      put in q
+    }
+    
+   return bfs
+   
+   # s : O(N)
+   # T : q will run for o(N) times because there are N nodes and those nodes are traversing degrees (twice of edges) i.e. O(N)+O(2E) 
