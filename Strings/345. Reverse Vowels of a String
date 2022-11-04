@@ -1,0 +1,96 @@
+class Solution {
+    List<Character> vowels=Arrays.asList(new Character[]{'a','e','i','o','u','A','E','I','O','U'});
+    // public String reverseVowels(String s) {
+    //     char[] ch=s.toCharArray();
+    //     int n=ch.length;
+    //     if(n==1)return s;
+    //     int l=(n-1);
+    //     //int f=0;
+    //     for(int f=0;f<(n/2);f++){
+    //         if(ch[f]=='a'|| ch[f]=='e'|| ch[f]=='i' || ch[f]=='o'|| ch[f]=='u'
+    //           || ch[f]=='A'|| ch[f]=='E'|| ch[f]=='I' || ch[f]=='O'|| ch[f]=='U'){
+    //            if(ch[l]=='a'|| ch[l]=='e'|| ch[l]=='i' || ch[l]=='o'|| ch[l]=='u'
+    //              || ch[l]=='A'|| ch[l]=='E'|| ch[l]=='I' || ch[l]=='O'|| ch[l]=='U'){
+    //                // if(ch[l]==' '){
+    //                //     l--;
+    //                //     break;
+    //                // }
+    //                // if(ch[f]==' '){
+    //                //     f++;
+    //                //     break;
+    //                // }
+    //                 char temp=ch[f];
+    //                 ch[f]=ch[l];
+    //                 ch[l]=temp;
+    //                 l--;
+    //                 //f++;
+    //             }else{
+    //                 l--;
+    //                 f--;
+    //             } 
+    //         }else{
+    //             //f++;
+    //         }
+    //     }
+    //     return String.valueOf(ch);
+    public String reverseVowels(String s) {
+        if(s.length()<=1)return s;
+        List<Integer> lLst=new ArrayList<>();
+        for(int i=0;i<=(s.length()/2);i++){
+            if(isVowel(s.charAt(i))){
+                lLst.add(i);
+            }
+        }
+        List<Integer> rLst=new ArrayList<>();
+        for(int i=s.length()-1;i>(s.length()/2);i--){
+            if(isVowel(s.charAt(i))){
+                rLst.add(i);
+            }
+        }
+        
+        int k=0;
+        if(lLst.size()!=rLst.size()){
+            int diff=(Math.abs(lLst.size()-rLst.size()))/2;
+            if(lLst.size()<rLst.size()){
+                while(diff>0){
+                    lLst.add(rLst.get(rLst.size()-1-k));
+                    rLst.remove(rLst.size()-1-k);
+                    diff--;
+                }
+            }else if(lLst.size()>rLst.size()){
+                while(diff>0){
+                    rLst.add(lLst.get(lLst.size()-1-k));
+                    lLst.remove(lLst.size()-1-k);
+                    diff--;
+                }
+            }
+        }
+        int i=0;
+        String retStr="";
+        if(!lLst.isEmpty()&&!rLst.isEmpty()){
+            char[] swpd=s.toCharArray();
+             while(i<lLst.size()&&i<rLst.size()){
+                    swpd=swap(lLst.get(i),rLst.get(i),swpd);
+                    i++;
+                }
+                retStr=new String(swpd);
+        
+        }else{
+            return s;
+        }
+        return retStr;
+    }
+
+    private boolean isVowel(char ch){
+        return vowels.contains(ch);
+    }
+
+    private char[] swap(int i,int j,char[] txt){
+        System.out.println("i:"+i);
+        System.out.println("j:"+j);
+        char temp=txt[i];
+        txt[i]=txt[j];
+        txt[j]=temp;
+        return txt;
+    }
+}
