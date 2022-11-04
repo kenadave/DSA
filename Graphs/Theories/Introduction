@@ -1,0 +1,59 @@
+vertex
+edge
+undirected
+directed
+bidirected
+cyclic -> starts at node x and end there
+--===
+path
+node cannot appear twice in a path
+must have an edge between nodes
+-===
+degree (undirected)
+number of edges attached to that node
+total degree = 2* number of edges
+
+directed
+indegree -> number of incoming edges
+outdegree -> -> number of outgoing edges
+
+edge weight
+
+-=============================
+Input 
+number of nodes, number of edges
+1-2
+3-4
+5-6
+etc
+
+store :-
+1) Matrix -> Adjecency Matrix
+2) List -> Adjecency List
+
+1) matrix :-
+mark 1 at intersection of row and column. if weighted matrix then assign weight
+S : O(N^2) so costly
+
+2) list
+list<list<>>
+S : O(2*edges)
+1 -> 2,3
+2 -> 5,6,3
+according to graph
+if weighted then
+1 -> (2,1),(3,4) in pair and second element is weight
+
+adj.get(u).add(v);
+adj.get(v).add(u);
+
+if directed, 
+adj.get(u).add(v);
+
+
+-===================
+visited array is used when nodes are visited in traversal
+not just traversal(i) will work because of disconnected components.
+for(from i to 10){
+if(!visited[i])traversal(i)
+}
