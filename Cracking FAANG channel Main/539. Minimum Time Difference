@@ -1,0 +1,42 @@
+for Input: timePoints = ["23:59","00:00"]
+difference is 1 minute but converting to numbers, will cause 1439 difference
+so adding 1440
+
+sort is neccessary so that I can check differences on consecutive elements :-
+15,3,10 min diff is 5. for that I need to check all the combinations :
+15-3,15-10,3-10 and minimum of all the combination
+if i sort it,
+3,10,15 then will get differences
+3-10,10-15 and minimum of these combination
+
+
+class Solution {
+    public int findMinDifference(List<String> timePoints) {
+        List<Integer> tLst=new ArrayList<>();
+        for(int i=0;i<timePoints.size();i++){
+            int hours=Integer.valueOf(timePoints.get(i).split(":")[0]);
+            int minutes=Integer.valueOf(timePoints.get(i).split(":")[1]);
+            int time=minutes+hours*60;
+            tLst.add(time);
+            // if(hours==0){
+            //     tLst.add(1440+minutes);
+            // }else{
+            //     tLst.add(time);
+            // }
+            
+        }
+        Collections.sort(tLst);
+        int res=1440+tLst.get(0)-tLst.get(tLst.size()-1);
+        //System.out.println(res);
+        // if(tLst.size()==2){
+        //     return Math.min(Math.abs(tLst.get(0)-tLst.get(1)),res);
+        // }
+        for(int i=1;i<tLst.size();i++){
+            //System.out.println(tLst.get(i+2));
+            // res=Math.min(Math.abs(tLst.get(i)-tLst.get(i+1)),
+            // Math.abs(tLst.get(i+1)-tLst.get(i+2)));
+            res=Math.min(res,tLst.get(i)-tLst.get(i-1));
+        }
+        return res;
+    }
+}
