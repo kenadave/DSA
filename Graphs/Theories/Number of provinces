@@ -1,0 +1,9 @@
+Number of unconnected graphs
+
+while(start to end){
+  if!visited
+    dfs(node) or bfs(node)
+}
+
+S : O(N)
+T : O(N) + O(V+2E)
