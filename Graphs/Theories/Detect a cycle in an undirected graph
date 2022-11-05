@@ -1,0 +1,11 @@
+Make a Queue
+visited
+
+use adjecency list and get elems of that node and put into q.
+
+Q will be,
+    Node -> where it came from
+    start node -> -1
+    2nd node -> start node
+    3rd node -> start node
+    4th node -> 2nd node and so on
