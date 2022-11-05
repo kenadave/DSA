@@ -14,3 +14,6 @@ dfs(node){
     if!visited
     dfs(node)
 }
+
+S : O(N^2)
+T : O(N^2)
