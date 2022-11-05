@@ -1,0 +1,58 @@
+class Solution {
+    
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        Set<Pair> dirs=new HashSet<>();
+    //a=-1,b=0 a=1,b=0 a=0,b=-1 a=0,b=1
+        dirs.add(new Pair(-1,0));
+        dirs.add(new Pair(1,0));
+        dirs.add(new Pair(0,-1));
+        dirs.add(new Pair(0,1));
+        int m=image.length;
+        int n=image[0].length;
+        int[][] newImage=new int[m][n];
+        for(int g=0;g<m;g++){
+            for(int h=0;h<n;h++){
+                //System.out.println("g:"+g+"h:"+h+"m:"+m+"n:"+n);
+                newImage[g][h]=image[g][h];
+            }
+        }
+        boolean[][] visited=new boolean[m][n];
+        Queue<Pair> q=new LinkedList<>();
+        Pair p=new Pair(sr,sc);
+        q.add(p);
+        visited[sr][sc]=true;
+        int imgClr=image[sr][sc];
+        newImage[sr][sc]=color;
+        while(!q.isEmpty()){
+            Pair np=q.remove();
+            //System.out.println(np.getFirst());
+            //System.out.!rintln(np.getSecond());
+            //currow-1,currcol, currrow+1,currcol  currrow,currcol-1 currrow,currcol+1
+            for(Pair d:dirs){
+                int newRow=np.getFirst()+d.getFirst();
+                int newCol=np.getSecond()+d.getSecond();
+                if(newRow>=0&&newRow<m&&newCol>=0&&newCol<n&&
+                !visited[newRow][newCol]&&image[newRow][newCol]==imgClr){
+                    q.add(new Pair(newRow,newCol));
+                    visited[newRow][newCol]=true;
+                    newImage[newRow][newCol]=color;
+                }
+            }
+        }
+        return newImage;
+    }
+}
+class Pair{
+    private int first;
+    private int second;
+    Pair(int first,int second){
+        this.first=first;
+        this.second=second;
+    }
+    public int getFirst(){
+        return this.first;
+    }
+    public int getSecond(){
+        return this.second;
+    }
+}
