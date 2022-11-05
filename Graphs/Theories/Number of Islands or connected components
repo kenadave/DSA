@@ -1,1 +1,16 @@
+One queue for pushing nodes and picking up one by one for traversal
+One visited DS, which marks visited nodes
+One DS for pushing values.
 
+for(all nodes of a matrix){
+  if!visited
+    dfs(node)
+}
+
+dfs(node){
+  q.add(node)
+  while q is not empty
+    adj node=q.pop
+    if!visited
+    dfs(node)
+}
