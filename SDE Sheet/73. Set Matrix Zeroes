@@ -1,0 +1,44 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        List<Pair> lst=new ArrayList<>();
+        int n=matrix[0].length;
+        int m=matrix.length;
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(matrix[i][j]==0){
+                    lst.add(new Pair(i,j));
+                }
+            }
+        }
+        for(Pair p:lst){
+            for(int j=0;j<n;j++){
+                matrix[p.row][j]=0;
+            }
+            for(int i=0;i<m;i++){
+                matrix[i][p.col]=0;
+            }
+        }
+        // boolean stop=false;
+        // for(int i=0;i<m && !stop;i++){
+        //     for(int j=0;j<n && !stop;j++){
+        //         if(matrix[i][j]==0){
+        //             for(int a=0;a<m;a++){
+        //                  matrix[i][a]=0;
+        //             }
+        //             for(int b=0;b<n;b++){
+        //                  matrix[b][j]=0;
+        //             }
+        //             stop=true;
+        //         }
+        //     }
+        // }
+    }
+}
+class Pair{
+    int row;
+    int col;
+    Pair(int row,int col){
+        this.row=row;
+        this.col=col;
+    }
+}
