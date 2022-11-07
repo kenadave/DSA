@@ -1,0 +1,59 @@
+class Solution {
+    public List<List<Integer>> generate(int numRows) {
+        List<Integer> inLst=new ArrayList<>();
+        List<List<Integer>> outLst=new ArrayList<>();
+        if(numRows==1){
+            inLst.add(numRows);
+            outLst.add(inLst);
+            return outLst;
+        }else{
+            inLst.add(1);
+            outLst.add(inLst);
+            for(int i=1;i<numRows;i++){
+                List<Integer> oldLst=outLst.get(i-1);
+                List<Integer> newList=new ArrayList<>();
+               // newList.add(1);
+                for(int j=0;j<=i;j++){
+                    if(j<oldLst.size()&&j>0){
+                        newList.add(oldLst.get(j-1)+oldLst.get(j));
+                    }else{
+                        newList.add(1);
+                    }
+                    
+                    // if(j<oldLst.size()&&j-1>0){
+                    //     newList.add(oldLst.get(j-1)+oldLst.get(j));
+                    // }else{
+                    //     newList.add(1);
+                    // }
+                }
+                outLst.add(newList);
+            }
+            return outLst;
+        }
+        // if(numRows==1){
+        //     inLst.add(numRows);
+        //     outLst.add(inLst);
+        //     return outLst;
+        // }else{
+        //     inLst.add(1);
+        //     outLst.add(inLst);
+        //     for(int i=1;i<numRows;i++){
+        //         inLst=new ArrayList<>();
+        //         for(int j=1;j<numRows;j++){
+        //             List<Integer> prevLst=(List<Integer>)outLst.get(i-1);
+        //             int sum=0;
+        //             for(int k=0;k<prevLst.size();k++){
+        //                 if(k-1<prevLst.size()){
+        //                   sum=prevLst.get(k);  
+        //                 }else{
+        //                    sum=prevLst.get(k-1)+prevLst.get(k);
+        //                 }
+        //                 inLst.add(sum);
+        //             }
+        //         }
+        //         outLst.add(inLst);
+        //     }
+        // }
+        // return outLst;
+    }
+}
