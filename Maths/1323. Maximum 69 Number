@@ -1,0 +1,18 @@
+class Solution {
+    public int maximum69Number (int num) {
+        //loop and check each digit if 6, if 6 convert to 9
+        // while(num>0){
+        //     num=num%10;
+
+        // }
+        String s=String.valueOf(Integer.valueOf(num));
+        char[] ch=s.toCharArray();
+        for(int i=0;i<s.length();i++){
+            if(s.charAt(i)=='6'){
+                ch[i]='9';
+                break;
+            }
+        }
+        return Integer.valueOf(String.valueOf(ch));
+    }
+}
