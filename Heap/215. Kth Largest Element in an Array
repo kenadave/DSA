@@ -1,0 +1,20 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        //add in heap, check if k is 
+        //I need largest so minimum should be at the bottom. so min heap will be used.
+        //add in heap, check if size of heap is greater than k? if yes remove the top elem
+        //when reached k, return the top elem
+        //edges cases : if negative integers? yes
+        //no elem ? yes
+        // 1 elem? yes
+        //k is greater than size of nums? No
+        PriorityQueue<Integer> minHeap=new PriorityQueue<>();
+        for(int i=0;i<nums.length;i++){
+            minHeap.add(nums[i]);
+            if(minHeap.size()>k){
+                minHeap.poll();
+            }
+        }
+        return minHeap.peek();
+    }
+}
