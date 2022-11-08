@@ -1,0 +1,79 @@
+class Solution {
+    public int[] sortArray(int[] nums) {
+        //merge
+        //divide and conquer
+        //cal mid then make 2 arrays arr1 & arr2
+        //compare arr1[i] & arr2[i] and merge it
+        //loop
+        // int low=0;
+        // int high=nums.length;
+        // int[] temp=new int[nums.length];
+        // return splitAndMerge(nums,temp,low,high);
+
+        int n=nums.length;
+        if(n<2){
+            return nums;
+        }
+        int mid=n/2;
+        int[] leftHalf=new int[mid];
+        int[] rightHalf=new int[n-mid];
+        for(int i=0;i<mid;i++){
+            leftHalf[i]=nums[i];
+            //System.out.println(leftHalf[i]);
+        }
+        for(int i=mid;i<n;i++){
+            rightHalf[i-mid]=nums[i];
+            //System.out.println(rightHalf[i-mid]);
+        }
+        sortArray(leftHalf);
+        sortArray(rightHalf);
+        merge(nums,leftHalf,rightHalf);
+        return nums;
+    }
+    private void merge(int[] nums,int[] leftHalf,int[] rightHalf){
+        int i=0,j=0,k=0;
+        while(i<leftHalf.length && j<rightHalf.length){
+            if(leftHalf[i]<=rightHalf[j]){
+                nums[k]=leftHalf[i];
+                i++;
+            }else{
+                nums[k]=rightHalf[j];
+                j++;
+            }
+            k++;
+        }
+        while(i<leftHalf.length){
+                nums[k]=leftHalf[i];
+                i++;
+                k++;
+            }
+            while(j<rightHalf.length){
+                nums[k]=rightHalf[j];
+                j++;
+                k++;
+            }
+    }
+    // public int[] splitAndMerge(int[] nums,int[] temp,int low,int high){
+    //     int mid=0;
+    //     if(low<high){
+    //          //if(low==high)return nums;
+    //         mid=(low+high)/2;
+    //         splitAndMerge(nums,temp,low,mid-1);
+    //         splitAndMerge(nums,temp,mid+1,high);
+    //     }
+       
+    //     //merge
+    //     int l=low;
+    //     int r=mid;
+    //     for(int i=low;i<high;i++){
+    //         if(nums[l]<nums[r]){
+    //             temp[i]=nums[l];
+    //             l++;
+    //         }else{
+    //             temp[i]=nums[r];
+    //             r++;
+    //         }
+    //     }
+    //    return temp;
+    // }
+}
