@@ -1,0 +1,68 @@
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        //make a single array from matrix
+        //apply binary search\
+        
+        int row=matrix.length;
+        int col=matrix[0].length;
+        int[] arr=new int[row*col];
+        int k=0;
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                arr[k]=matrix[i][j];
+                k++;
+            }
+        }
+        int start=0;
+        int end=arr.length-1;
+        //int mid=(start+end)/2;
+        while(start<=end){
+            int mid=(start+end)/2;
+            System.out.println(mid);
+            if(arr[mid]==target)return true;
+            if(arr[mid]<target){
+                start=mid+1;
+                //mid=(start+mid)/2;
+            }else{
+                end=mid-1;
+                //mid=(end+mid)/2;
+            }
+        }//if((start>=0 && start<arr.length && arr[start]==target)||(end>=0 && end<arr.length && arr[end]==target))return true;
+
+        return false;
+        //or 2d binary search
+        //middle elem 11 & 16 less than 11 yes from 10 to 11 less than 10? yes 1 to 3
+        //midRow=rows/2
+        //midCol=col/2
+        // int left=0;
+        // int right=matrix[0].length;
+        // int up=0;
+        // int down=matrix.length;
+        // int desRow=0;
+        // int midCol=(left+right)/2;
+        // while(up<=down){
+        //     int midRow=(up+down)/2;
+        //     desRow=midRow;
+        //     //5System.out.println("row"+midRow);
+        //     if(matrix[midRow][midCol]==target)return true;
+        //     if(matrix[midRow][midCol]<target){
+        //         up=midRow+1;
+                
+        //     }else{
+        //         down=midRow-1;
+                
+        //     }
+        // }
+        // while(left<=right){
+        //     midCol=(left+right)/2;
+        //     System.out.println("desRow"+desRow+"midCol"+midCol+":"+matrix[desRow][midCol]+"res"+(matrix[desRow][midCol]==target));
+        //     if(matrix[desRow][midCol]==target)return true;
+        //     if(matrix[desRow][midCol]<target){
+        //         left=midCol+1;
+        //     }else{
+        //         right=midCol-1;
+        //     }
+        // }
+        // return false;
+    }
+}
