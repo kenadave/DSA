@@ -1,0 +1,30 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum=0;
+        int maxSum=Integer.MIN_VALUE;
+        if(nums.length==1)return nums[0];
+        for(int i=0;i<nums.length;i++){
+            sum=Math.max(nums[i],sum+nums[i]);
+            maxSum=Math.max(maxSum,sum);
+            //if(sum<0)sum=0;
+        }
+        // int min=nums[0];
+        // if(nums.length>1){
+        //     for(int i=0;(i+1)<nums.length;i++){
+        //     sum=Math.max(sum,nums[i]+nums[i+1]); //5+4+7+8
+        //     min=Math.min(min,nums[i+1]); //4+(-1)+
+        //     }
+        // }else
+        //     return nums[0];
+        return maxSum;
+
+        // int sum=0;
+        // int start=0;
+        // int end=1;
+        // for(int i=0;i<nums.length;i++){
+        //     int temp=nums[start]+nums[end];
+        //     sum=Math.max(sum,);
+        // }
+        // return sum;
+    }
+}
