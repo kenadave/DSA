@@ -1,0 +1,20 @@
+class Solution {
+    public String reverseWords(String s) {
+        Stack<String> st=new Stack<>();
+        StringBuilder sb=new StringBuilder();
+        String[] arr=s.trim().split(" ");
+        for(int i=0;i<arr.length;i++){
+            if(arr[i]!=" " && arr[i].matches("[a-zA-Z0-9]+")){
+                st.push(arr[i].trim());
+            }
+        }
+        int n=st.size();
+        for(int i=0;i<n;i++){
+            sb.append(st.pop());
+            if(i!=(n-1)){
+                sb.append(" ");
+            }
+        }
+        return sb.toString();
+    }
+}
