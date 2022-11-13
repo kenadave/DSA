@@ -1,0 +1,21 @@
+class Solution {
+    public double myPow(double x, int n) {
+        //return Math.pow(x,n);
+        double ans=1.0;
+        long v=n;
+        if(n<0)v=-(long)n;
+        while(v>0){
+            if(v%2==0){
+                x=x*x;
+                v=v/2;
+            }else{
+                ans=ans*x;
+                v=v-1;
+            }
+        }
+        if(n<0){
+            ans=(1/ans);
+        }
+        return ans;
+    }
+}
