@@ -1,0 +1,29 @@
+import java.util.* ;
+import java.io.*; 
+import java.util.ArrayList;
+
+public class Solution 
+{
+	public static ArrayList<Integer> mergeKSortedArrays(ArrayList<ArrayList<Integer>> kArrays, int k)
+	{
+		// Write your code here.
+        //heap i add 3 ,5 ,9
+        //in that add 1 2 3 ,8
+        //pop one by one and insert into the list
+        //maxheap will give top elem largest
+        // so i need meanheap
+        PriorityQueue<Integer> minHeap=new PriorityQueue<>();
+        ArrayList<Integer> lst=new ArrayList<>();
+        for(int i=0;i<k;i++){
+            for(Integer j:kArrays.get(i)){
+                 minHeap.add(j);   
+            }
+        }
+        int len=minHeap.size();
+        for(int i=0;i<len;i++){
+            lst.add(minHeap.poll());
+        }
+        return lst;
+	}
+}
+https://www.codingninjas.com/codestudio/problems/merge-k-sorted-arrays_975379?leftPanelTab=0
