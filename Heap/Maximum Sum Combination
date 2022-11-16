@@ -1,0 +1,104 @@
+https://placewit.medium.com/k-max-sum-combinations-2c6d67a3acb
+
+
+public class Solution {
+    public ArrayList<Integer> solve(ArrayList<Integer> A, ArrayList<Integer> B, int C) {
+        
+        Collections.sort(A);
+        Collections.sort(B);
+        Data d=new Data(A.size()-1,B.size()-1,(A.get(A.size()-1)+B.get(B.size()-1)));
+        PriorityQueue<Data> minHeap=new PriorityQueue<>(Collections.reverseOrder());
+        ArrayList<Integer> res=new ArrayList<>();
+        Set<Data> st=new HashSet<>();
+        minHeap.add(d);
+        for(int i=0;i<C;i++){
+            d=minHeap.poll();
+            int xx=d.x;
+            int yy=d.y;
+            int sum=d.sum;
+            res.add(sum);
+            st.add(d);
+            Data d1=new Data(xx-1,yy,(A.get(xx-1)+B.get(yy)));
+            if(!st.contains(d1)){
+                minHeap.add(d1);
+            }
+            d1=new Data(xx,yy-1,(A.get(xx)+B.get(yy-1)));
+            if(!st.contains(d1)){
+                minHeap.add(d1);
+            }
+        }
+        return res;
+        //get all sum combinations
+        //sort all and select last C
+        //OR
+        //sort both ArrayLists
+        //select last elems
+        // Collections.sort(A);
+        // Collections.sort(B);
+        // ArrayList<Integer> res=new ArrayList<>();
+        // for(int i=0;i<C;i++){
+        //     res.add(A.get(A.size()-i-1)+A.get(B.size()-i-1));
+        // }
+        // return res;
+        
+        // List<List<Integer>> lst=new ArrayList<>();
+        // lst=getAllCombinations(A,B);
+        // Collections.sort(lst);
+        // for(int i=0;i<C;i++){
+            
+        // }
+        
+        //maximum C so minheap
+        
+        //add from A to pqA
+        //add from B to pqB
+        //for loop for C
+        //pop from A and B, add it and add in List
+        // ArrayList<Integer> res=new ArrayList<>();
+        // PriorityQueue<Integer> pqA=new PriorityQueue<>(A.size(),Collections.reverseOrder());
+        // A.stream().forEach(aa->pqA.add(aa));
+        // PriorityQueue<Integer> pqB=new PriorityQueue<>(B.size(),Collections.reverseOrder());
+        // B.stream().forEach(aa->pqA.add(aa));
+        // for(int i=0;i<C;i++){
+        //     int a=pqA.poll();
+        //     int b=pqA.poll();
+        //     res.add(a+b);
+        // }
+        // return res;
+    }
+}
+class Data implements Comparable<Data>{
+    int x;
+    int y;
+    int sum;
+    Data(int x,int y,int sum){
+        this.x=x;
+        this.y=y;
+        this.sum=sum;
+    }
+    @Override
+    public int compareTo(Data t){
+        if(t.x==this.x&&t.y==this.y){
+            return 1;
+        }
+        return 0;
+    }
+    @Override
+    public boolean equals(Object o1){
+        if (this == o1)
+				return true;
+        if (o1 == null)
+            return false;
+        if (getClass() != o1.getClass())
+            return false;
+        Data t=(Data)o1;
+        int x1=(int)t.x;
+        int y1=(int)t.y;
+        return x1==this.x && y1==this.y;
+    }
+    
+    @Override
+    public int hashCode(){
+        return Objects.hash(x, y);
+    }
+}
