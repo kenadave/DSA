@@ -1,0 +1,9 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        char[] sarr=s.toCharArray();
+        Arrays.sort(sarr);
+        char[] tarr=t.toCharArray();
+        Arrays.sort(tarr);
+        return String.valueOf(sarr).equals(String.valueOf(tarr));
+    }
+}
