@@ -1,0 +1,26 @@
+import java.util.* ;
+import java.io.*; 
+public class Solution {
+
+	public static void sortStack(Stack<Integer> stack) {
+		// Write your code here.
+        
+        //sort method in which last elem is extracted
+        if(stack.isEmpty())
+            return;
+        Integer last=stack.pop();
+        sortStack(stack);
+        insert(stack,last);
+	}
+    
+    public static void insert(Stack<Integer> stack,Integer last){
+        if(stack.isEmpty()||stack.peek()<=last){
+            stack.push(last);
+            return;
+        }
+        Integer secLast=stack.pop(); //5
+        insert(stack,last); // 2
+        stack.push(secLast);//5
+    }
+
+}
