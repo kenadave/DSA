@@ -1,0 +1,21 @@
+import java.util.*;
+public class Solution {
+    public static int calculateMinPatforms(int at[], int dt[], int n) {
+        // Write your code here.
+        Arrays.sort(at);
+        Arrays.sort(dt);
+        int i=1,j=0,platforms=1,maxPlatforms=1;
+        while(i<n && j<n){
+            //System.out.println("a:"+at[i]+"d:"+dt[j]);
+            if(at[i]<=dt[j]){
+                platforms++;
+                i++;
+            }else if(at[i]>dt[j]){
+                platforms--;
+                j++;
+            }
+            maxPlatforms=Math.max(maxPlatforms,platforms);
+        }
+        return maxPlatforms;
+    }
+}
