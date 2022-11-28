@@ -1,0 +1,65 @@
+class Solution {
+    public List<List<Integer>> findWinners(int[][] matches) {
+        // winner list
+        // loser list
+        // intersection of both
+        // winner list - intersection --> answer[0]
+        // iterate loser list and make a map
+        // make list of whose having 1 as a value in map --> answer[1]
+        List<List<Integer>> outLst=new ArrayList<>();
+        int winLength=matches.length;
+        List<Integer> winLst=new ArrayList<>();
+        List<Integer> losLst=new ArrayList<>();
+
+        Set<Integer> winSet=new TreeSet<>();
+        Set<Integer> lsSet=new TreeSet<>();
+        Map<Integer,Integer> mp=new HashMap<>();
+        for(int i=0;i<winLength;i++){
+            winSet.add(matches[i][0]);
+            lsSet.add(matches[i][1]);
+            if(mp.containsKey(matches[i][1])){
+                mp.put(matches[i][1],mp.get(matches[i][1])+1);
+            }else{
+                mp.put(matches[i][1],1);
+            }
+            //losLst.add(matches[i][1]);
+            // if(winLst.contains(matches[i][1])){
+            //     winLst.removeAll(Collections.singleton(matches[i][1]));
+            // }
+            
+        }
+        winSet.removeAll(lsSet);
+        
+        for(Map.Entry<Integer,Integer> en:mp.entrySet()){
+            if(en.getValue()>1){
+                //System.out.println(en.getValue());
+                lsSet.remove(en.getKey());
+            }
+        }
+        // List<Integer> dupWinLst=new ArrayList<>(winLst);
+        // dupWinLst.retainAll(losLst);
+        
+        // winLst.removeAll(dupWinLst);
+        //winSet.addAll(winLst);
+        winLst=new ArrayList<>(winSet);
+
+        
+        // Set<Integer> dup=new HashSet<>();
+        // for(int i=0;i<losLst.size();i++){
+        //     if(lsSet.contains(losLst.get(i))){
+        //         lsSet.remove(losLst.get(i));
+        //         dup.add(losLst.get(i));
+        //     }else{
+        //         if(!dup.contains(losLst.get(i))){
+        //             lsSet.add(losLst.get(i));
+        //         }
+                
+        //     }
+        // }
+        //losLst=new ArrayList<>(lsSet);
+        losLst=new ArrayList<>(lsSet);
+        outLst.add(winLst);
+        outLst.add(losLst);
+        return outLst;
+    }
+}
