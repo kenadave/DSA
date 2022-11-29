@@ -1,0 +1,56 @@
+class RandomizedSet {
+    int index;
+    Set<Integer> st;
+    int count;
+    List<Integer> lst;
+    public RandomizedSet() {
+        //RandomizedSet rs=new RandomizedSet();
+        st=new HashSet<>();
+        index=0;
+        count=0;
+        lst=new ArrayList<>();
+    }
+    
+    public boolean insert(int val) {
+        if(!this.st.contains(val)){
+            this.st.add(val);
+            lst.add(val);
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public boolean remove(int val) {
+        if(this.st.contains(val)){
+            this.st.remove(val);
+            lst.remove(lst.indexOf(val));
+            return true;
+        }else{
+            return false;
+        }
+    }
+    
+    public int getRandom() {
+        // int size=this.st.size();
+        // //int item=new Random().nextInt(size);
+        // index=index%size;
+        // int ans=(int)this.st.toArray()[index++];
+        // count++;
+        // if(count>9999){
+        //     ans=(int)this.st.toArray()[2];
+        // }
+        // //System.out.println(ans);
+        // return ans;
+        int ans = lst.get((int)(Math.random()*lst.size()));
+        return ans;
+    }
+}
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
