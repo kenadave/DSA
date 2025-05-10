@@ -62,9 +62,9 @@ class SocNetDSU{
 			return;
 		}
 		if(rank[px]<rank[py]) {
-			parent[py]=px;
-		}else {
 			parent[px]=py;
+		}else {
+			parent[py]=px;
 			if(rank[px]==rank[py]) {
 				rank[px]++;
 			}
