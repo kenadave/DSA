@@ -45,6 +45,9 @@ class DSULargest{
 	public void union(int x,int y) {
 		int px=findParent(x);
 		int py=findParent(y);
+		if(px==py) {
+			return;
+		}
 		if(rank[px]<rank[py]) {
 			parent[px]=py;
 			max[py]=Math.max(max[px], max[py]);
