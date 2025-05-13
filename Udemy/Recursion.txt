@@ -1,0 +1,7 @@
+=> We create the source code. Compiler generates machine level binary code from it. The binary code is stored in RAM. 
+=> RAM has 3 parts : Machine level code, Stack, and Heap.
+=> Stack Memory is used to store functions and local variables.
+=> Heap Memory is used to store object references.
+=> Recursion function calls are stored in stack.
+=> 2 types of Recursion : Head ( The call is done first and then rest of the statements. So for executing the last statment of the method, last/base call is required )
+                          Tail ( The call is at the end of executing all the statements. )
