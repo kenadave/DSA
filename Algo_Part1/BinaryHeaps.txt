@@ -1,0 +1,41 @@
+private void swim(int k){
+    while(k>1 && less(k/2,k)){
+      exch(k,k/2);
+      k=k/2;
+    }
+}
+index is passed, and in less and exch function the indeces are used to get the array element, either to compare or to swap.
+take less(k/2,k) as k/2<k
+
+public void insert(Key x){
+  array[++N]=x;
+  swim(N);
+}
+
+private static boolean less(Comparable v, Comparable w) {
+    return v.compareTo(w) < 0;
+// return v<w
+}
+
+
+private void sink(k){
+  while(2k <= N){
+    int j=2k;
+    if(less(j,j+1))j++; //select larger child
+    if(less(j,k))break;
+    exch(j,k);
+  }
+}
+
+
+private Key delMax(){
+  Key max = arr[1];
+  exch(N--,1);
+  sink(1);
+  arr[N+1]=null;
+  return max;
+}
+
+
+- > Immutable keys
+- > Minimum oriented : replace less() with greater()
